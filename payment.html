@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Payment - Black Pearl Pvt Ltd</title>
+  <style>
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#fffcfc;margin:0;padding:40px;color:#000}
+    .container{max-width:700px;margin:0 auto}
+    .panel{background:#fff;padding:16px;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+    label{font-weight:600}
+    .methods{display:flex;gap:12px;margin:12px 0}
+    .method{padding:10px;border-radius:6px;border:1px solid #eee;cursor:pointer}
+    .method.active{border-color:#0077cc;background:#eaf4ff}
+    input,select{padding:10px;border:1px solid #ccc;border-radius:6px;width:100%;box-sizing:border-box}
+    .btn{background:#0077cc;color:#fff;padding:10px;border:none;border-radius:6px;cursor:pointer}
+    .success{color:green;font-weight:700;margin-top:12px}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Payment</h1>
+    <div class="panel">
+      <div>Booking for: <strong id="p-park">-</strong></div>
+      <div>Date: <span id="p-date">-</span></div>
+      <div>Tickets: <span id="p-tickets">-</span></div>
+      <div>Package: <span id="p-package">-</span></div>
+      <div>Coupon: <span id="p-coupon">-</span></div>
+      <div style="margin-top:8px">Amount: <strong>₹<span id="p-total">0</span></strong></div>
+
+      <div style="margin-top:12px">
+        <label>Choose Payment Method</label>
+        <div class="methods">
+          <div class="method active" data-method="card">Card</div>
+          <div class="method" data-method="upi">UPI</div>
+          <div class="method" data-method="paypal">PayPal</div>
+        </div>
+
+        <div id="method-form">
+          <!-- Card form by default -->
+          <div id="form-card">
+            <label>Card Number</label>
+            <input id="card-number" placeholder="4111 1111 1111 1111">
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <input id="card-exp" placeholder="MM/YY">
+              <input id="card-cvc" placeholder="CVC">
+            </div>
+          </div>
+        </div>
+
+        <button class="btn" id="pay-now" style="margin-top:12px">Pay Now</button>
+        <div id="pay-msg" class="success" style="display:none">Payment successful! Thank you.</div>
+      </div>
+
+      <p style="margin-top:12px"><a href="booking.html">← Back to booking</a></p>
+    </div>
+  </div>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const park = params.get('park') || '-';
+    const date = params.get('date') || '-';
+    const tickets = params.get('tickets') || '-';
+    const pkg = params.get('package') || '-';
+    const coupon = params.get('coupon') || '-';
+    const total = params.get('total') || '0';
+    document.getElementById('p-park').textContent = park;
+    document.getElementById('p-date').textContent = date;
+    document.getElementById('p-tickets').textContent = tickets;
+    document.getElementById('p-package').textContent = pkg;
+    document.getElementById('p-coupon').textContent = coupon || '—';
+    document.getElementById('p-total').textContent = total;
+
+    // payment method toggle
+    document.querySelectorAll('.method').forEach(m => m.addEventListener('click', () => {
+      document.querySelectorAll('.method').forEach(x=>x.classList.remove('active'));
+      m.classList.add('active');
+      const method = m.getAttribute('data-method');
+      const mf = document.getElementById('method-form');
+      if (method === 'card') mf.innerHTML = `\n          <div id="form-card">\n            <label>Card Number</label>\n            <input id="card-number" placeholder="4111 1111 1111 1111">\n            <div style="display:flex;gap:8px;margin-top:8px">\n              <input id="card-exp" placeholder="MM/YY">\n              <input id="card-cvc" placeholder="CVC">\n            </div>\n          </div>`;
+      if (method === 'upi') mf.innerHTML = `\n          <div id="form-upi">\n            <label>UPI ID</label>\n            <input id="upi-id" placeholder="yourid@bank">\n          </div>`;
+      if (method === 'paypal') mf.innerHTML = `\n          <div id="form-paypal">\n            <p>You'll be redirected to PayPal to complete the payment.</p>\n          </div>`;
+    }));
+
+    document.getElementById('pay-now').addEventListener('click', () => {
+      // Mock payment flow
+      document.getElementById('pay-msg').style.display = 'block';
+      // In real app, call payment gateway API then confirm booking on server
+    });
+  </script>
+</body>
+</html>

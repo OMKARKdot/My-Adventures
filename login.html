@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log In / Sign Up - Black Pearl Pvt Ltd</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      background: linear-gradient(180deg, #0468ab, #ffffff);
+      color: #000000;
+      margin: 0;
+      padding: 150px;
+    }
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      text-align: left;
+    }
+    label {
+      font-weight: bold;
+    }
+    input[type="text"], input[type="email"], input[type="password"] {
+      padding: 10px;
+      font-size: 16px;
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #0077cc;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #005fa3;
+    }
+    .toggle {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+    .back-button {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 16px;
+      color: #ffffff;
+      background-color: #0077cc;
+      padding: 10px 20px;
+      border-radius: 4px;
+      text-decoration: none;
+    }
+    .back-button:hover {
+      background-color: #005fa3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Log In</h1>
+    <form id="login-form">
+      <label for="email">Email</label>
+      <input type="email" id="email" required>
+      <label for="password">Password</label>
+      <input type="password" id="password" required>
+      <button type="submit" class="btn">Log In</button>
+    </form>
+    <div class="toggle">
+      <p>Don't have an account? <a href="#" id="show-signup">Sign up</a></p>
+    </div>
+    <form id="signup-form" style="display:none;">
+      <h1>Sign Up</h1>
+      <label for="name">Name</label>
+      <input type="text" id="name" required>
+      <label for="signup-email">Email</label>
+      <input type="email" id="signup-email" required>
+      <label for="signup-password">Password</label>
+      <input type="password" id="signup-password" required>
+      <button type="submit" class="btn">Sign Up</button>
+    </form>
+    <p><a href="index.html" class="back-button">&larr; Back to Home</a></p>
+  </div>
+  <script>
+    document.getElementById('show-signup').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('login-form').style.display = 'none';
+      document.getElementById('signup-form').style.display = 'block';
+    });
+  </script>
+</body>
+</html>

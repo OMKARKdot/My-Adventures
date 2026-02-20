@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Book - Black Pearl Pvt Ltd</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: linear-gradient(to bottom, #0077cc, #ffffff); color:#396bff; margin:0; padding:40px; }
+    .container { max-width:760px; margin:0 auto; }
+    h1 { font-size:28px; }
+    .grid { display:grid; grid-template-columns: 1fr 320px; gap:20px; align-items:start; }
+    .panel { background:#fff; padding:16px; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.06); }
+    label { font-weight:600; font-size:14px; }
+    input, select { padding:10px; font-size:16px; border:1px solid #ccc; border-radius:6px; width:100%; box-sizing:border-box; }
+    .btn { background:#0077cc; color:#fff; padding:10px 14px; border:none; border-radius:6px; cursor:pointer; }
+    .btn:hover { background:#005fa3 }
+    .back { display:inline-block; margin-top:16px; text-decoration:none; color:#0077cc }
+    .package { padding:10px; border-radius:6px; border:1px solid #eee; margin-bottom:12px; }
+    .package input { margin-right:8px; }
+    .offers { font-size:14px; color:#333; }
+    .coupon-row { display:flex; gap:8px; margin-top:8px; }
+    .total { font-size:18px; font-weight:700; margin-top:12px; }
+    .applied { color:green; font-weight:600; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="park-name">Book Your Visit</h1>
+    <div class="grid">
+      <div>
+        <div class="panel">
+          <form id="booking-form">
+            <label for="date">Date</label>
+            <input type="date" id="date" required>
+
+            <label style="margin-top:12px;">Choose Package</label>
+            <div class="package"><label><input type="radio" name="package" value="individual" checked> Individual — ₹500 per ticket</label></div>
+            <div class="package"><label><input type="radio" name="package" value="family"> Family Package — 4 tickets for ₹1500</label></div>
+            <div class="package"><label><input type="radio" name="package" value="friends"> Friends Pack — 3 tickets for ₹1200</label></div>
+            <div class="package"><label><input type="radio" name="package" value="school"> School Group — ₹300 per ticket (10+)</label></div>
+
+            <label for="tickets">Tickets (if applicable)</label>
+            <select id="tickets">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="10">10</option>
+            </select>
+
+            <label for="name" style="margin-top:12px;">Your Name</label>
+            <input id="name" type="text" required>
+            <label for="email">Email</label>
+            <input id="email" type="email" required>
+
+            <div style="margin-top:12px;">
+              <label>Offers</label>
+              <div class="offers">
+                - Early Bird: 10% off for bookings 30+ days ahead<br>
+                - Weekend Special: ₹100 off on weekends (Sat/Sun)<br>
+                - Family Saver: extra ₹100 off on Family Package
+              </div>
+            </div>
+
+            <div style="margin-top:12px;">
+              <label>Coupon</label>
+              <div class="coupon-row">
+                <input id="coupon" placeholder="Enter coupon code">
+                <button type="button" id="apply-coupon" class="btn">Apply</button>
+              </div>
+              <div id="coupon-msg" style="margin-top:8px;color:#d32;display:none"></div>
+            </div>
+
+            <div class="total">Total: ₹<span id="total-amount">0</span></div>
+
+            <div style="margin-top:12px;">
+              <button class="btn" id="to-payment" type="button">Proceed to Payment</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div>
+        <div class="panel">
+          <h3>Summary</h3>
+          <div id="summary" style="font-size:15px;line-height:1.5">
+            <div>Park: <strong id="summary-park">-</strong></div>
+            <div>Date: <span id="summary-date">-</span></div>
+            <div>Package: <span id="summary-package">Individual</span></div>
+            <div>Tickets: <span id="summary-tickets">1</span></div>
+            <div>Coupon: <span id="summary-coupon">—</span></div>
+            <div class="applied" id="summary-discount" style="display:none">Discount applied</div>
+            <div style="margin-top:8px">Payable: <strong>₹<span id="summary-total">0</span></strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top:18px"><a class="back" href="index.html">← Back to Home</a></p>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const park = params.get('park') || '';
+    if (park) document.getElementById('park-name').textContent = 'Book: ' + park;
+    document.getElementById('summary-park').textContent = park || '-';
+
+    // Pricing logic
+    const PRICES = { individual: 500, family_fixed: 1500, friends_fixed: 1200, school_per: 300 };
+    let appliedCoupon = null;
+
+    function computeTotal() {
+      const pkg = document.querySelector('input[name="package"]:checked').value;
+      let tickets = parseInt(document.getElementById('tickets').value, 10) || 1;
+      let total = 0;
+      if (pkg === 'individual') {
+        total = PRICES.individual * tickets;
+      } else if (pkg === 'family') {
+        total = PRICES.family_fixed; tickets = 4;
+      } else if (pkg === 'friends') {
+        total = PRICES.friends_fixed; tickets = 3;
+      } else if (pkg === 'school') {
+        // ensure minimum 10 for school
+        if (tickets < 10) tickets = 10;
+        total = PRICES.school_per * tickets;
+      }
+
+      // Offers: early bird (10% if booking 30+ days ahead)
+      const dateVal = document.getElementById('date').value;
+      if (dateVal) {
+        const selected = new Date(dateVal);
+        const diff = (selected - new Date()) / (1000*60*60*24);
+        if (diff >= 30) total = Math.round(total * 0.9);
+      }
+      // Weekend special
+      if (dateVal) {
+        const sel = new Date(dateVal).getDay();
+        if (sel === 0 || sel === 6) { total = Math.max(0, total - 100); }
+      }
+      // Family saver: extra 100 off
+      if (pkg === 'family') { total = Math.max(0, total - 100); }
+
+      // apply coupon
+      if (appliedCoupon) {
+        if (appliedCoupon.type === 'percent') total = Math.round(total * (1 - appliedCoupon.value/100));
+        else if (appliedCoupon.type === 'fixed') total = Math.max(0, total - appliedCoupon.value);
+      }
+
+      document.getElementById('total-amount').textContent = total;
+      document.getElementById('summary-tickets').textContent = tickets;
+      document.getElementById('summary-package').textContent = pkg.charAt(0).toUpperCase() + pkg.slice(1);
+      document.getElementById('summary-total').textContent = total;
+      document.getElementById('summary-date').textContent = dateVal || '-';
+      document.getElementById('summary-coupon').textContent = appliedCoupon ? appliedCoupon.code : '—';
+      document.getElementById('summary-discount').style.display = appliedCoupon ? 'block' : 'none';
+      return total;
+    }
+
+    // coupon handling
+    const COUPONS = {
+      'SAVE10': { type: 'percent', value: 10 },
+      'BLACKPEARL50': { type: 'fixed', value: 50 },
+      'SCHOOL5': { type: 'percent', value: 5 }
+    };
+
+    document.querySelectorAll('input[name="package"]').forEach(el => el.addEventListener('change', () => {
+      // adjust tickets select for package defaults
+      const pkg = document.querySelector('input[name="package"]:checked').value;
+      if (pkg === 'family') document.getElementById('tickets').value = '4';
+      if (pkg === 'friends') document.getElementById('tickets').value = '3';
+      computeTotal();
+    }));
+
+    document.getElementById('date').addEventListener('change', computeTotal);
+    document.getElementById('tickets').addEventListener('change', computeTotal);
+
+    document.getElementById('apply-coupon').addEventListener('click', () => {
+      const code = (document.getElementById('coupon').value || '').trim().toUpperCase();
+      const msg = document.getElementById('coupon-msg');
+      if (!code) { msg.style.display='block'; msg.textContent='Enter a coupon code.'; return; }
+      const c = COUPONS[code];
+      if (!c) { msg.style.display='block'; msg.textContent='Invalid coupon.'; return; }
+      appliedCoupon = Object.assign({ code }, c);
+      msg.style.display='block'; msg.style.color='green'; msg.textContent='Coupon applied: ' + code;
+      computeTotal();
+    });
+
+    // Proceed to payment
+    document.getElementById('to-payment').addEventListener('click', () => {
+      const total = computeTotal();
+      const date = document.getElementById('date').value;
+      const tickets = document.getElementById('summary-tickets').textContent;
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const pkg = document.querySelector('input[name="package"]:checked').value;
+      const coupon = appliedCoupon ? appliedCoupon.code : '';
+      if (!date) { alert('Please select a date.'); return; }
+      if (!name || !email) { alert('Please provide name and email.'); return; }
+      const qp = new URLSearchParams({ park: park || '', date, tickets, name, email, package: pkg, coupon, total });
+      window.location.href = 'payment.html?' + qp.toString();
+    });
+
+    // initialize
+    computeTotal();
+  </script>
+</body>
+</html>

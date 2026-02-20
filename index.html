@@ -1,0 +1,2450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Adventures - Waterparks & Adventure Parks</title>
+<style>
+  /* Reset & Base Styles */
+  * {
+    box-sizing: border-box;
+    
+    
+    
+  }
+
+  body {
+    
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    background-color: #fffcfc;
+    color: #000000;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    text-decoration-style: wavy;
+    text-decoration-color: #000000;
+    color: #000000;
+
+    
+  }
+
+  img {
+    margin-top: 80px;
+    
+
+    color: #000000;
+    display: block;
+    max-width: 100%;
+  }
+
+  /* Typography Utilities */
+  .text-h1 {
+    
+    font-size: 100px;
+    font-weight: 500;
+    font-family: 'Georgia', serif;
+    letter-spacing: -0.03em;
+    line-height: 2;
+    color: #ffffff;
+  }
+
+  .text-h2 {
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .text-h3 {
+    font-size: 50px;
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .text-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    color: #ff0000;
+  }
+
+  /* Hero Section */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    background-color: #002b55; /* Fallback color */
+    
+  }
+
+  .hero__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0; /* Fixed: Changed from -1 to 0 to ensure visibility */
+  }
+
+  .hero__nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-top: 30px;
+    padding-right: 40px;
+    padding-bottom: 30px;
+    padding-left: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2; /* Ensure nav is above bg */
+  }
+
+  .hero__logo {
+    font-weight: 700;
+    font-size: 20px;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .hero__menu {
+    display: flex;
+    gap: 15px;
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .hero__link {
+    font-size: 18px;
+    color: #ffffff;
+    opacity: 0.8;
+    transition-property: opacity;
+    transition-duration: 0.3s;
+  }
+
+  .hero__link:hover {
+    opacity: 1;
+  }
+
+  .hero__content {
+    position: absolute;
+    bottom: 20px;
+    left: 10px;
+    z-index: 2; /* Ensure content is above bg */
+  }
+
+  /* Waterpark Deals Banner */
+  .deals-banner {
+    background: linear-gradient(135deg, #ff6b35, #f7c948, #00b4d8);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    animation-name: shimmer;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    position: relative;
+    overflow: hidden;
+  }
+
+  @keyframes shimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  .deals-banner__text {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .deals-banner__text span {
+    background-color: #ffffff;
+    color: #ff6b35;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-left: 10px;
+    font-size: 14px;
+    animation-name: pulse;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+  }
+
+  /* Splash Highlights */
+  .splash-highlights {
+    background: linear-gradient(180deg, #0772e3, #ffffff);  
+    padding-top: 80px;
+    padding-right: 40px;
+    padding-bottom: 80px;
+    padding-left: 40px;
+  }
+
+  .splash-highlights__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .splash-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    color: #ffffff;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .splash-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  }
+
+  .splash-card__emoji {
+    font-size: 50px;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .splash-card__title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .splash-card__text {
+    font-size: 15px;
+    opacity: 0.9;
+    line-height: 1.6;
+  }
+
+  /* Special Offers Section */
+  .offers {
+    background: linear-gradient(180deg, #001d3d, #003566);
+    padding-top: 100px;
+    padding-right: 40px;
+    padding-bottom: 100px;
+    padding-left: 40px;
+    color: #4d0000;
+  }
+
+  .offers__header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .offers__title {
+    font-size: 48px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  .offers__subtitle {
+    font-size: 18px;
+    opacity: 0.8;
+    margin: 0;
+  }
+
+  .offers__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .offer-card {
+    background: linear-gradient(135deg, #0077b6, #00b4d8);
+    border-radius: 16px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .offer-card--hot {
+    background: linear-gradient(135deg, #ff6b35, #f7c948);
+  }
+
+  .offer-card__badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #1f000a;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+  }
+
+  .offer-card__name {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .offer-card__desc {
+    font-size: 15px;
+    opacity: 0.9;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .offer-card__price {
+    font-size: 36px;
+    font-weight: 700;
+  }
+
+  .offer-card__price s {
+    font-size: 20px;
+    opacity: 0.6;
+    font-weight: 400;
+  }
+
+  .offer-card__cta {
+    display: inline-block;
+    margin-top: 20px;
+    background-color: #ffffff;
+    color: #003566;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: transform 0.2s;
+  }
+
+  .offer-card__cta:hover {
+    transform: scale(1.05);
+  }
+
+  /* Intro Section */
+  .intro {
+    background: linear-gradient(60deg, #3a8fff, #ffffff);
+    padding-top: 120px;
+    padding-right: 40px;
+    padding-bottom: 120px;
+    padding-left: 40px;
+  }
+
+  .intro__grid {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr;
+    gap: 40px;
+    max-width: 1200px;
+    margin-top: 0;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-left: auto;
+  }
+
+  .intro__headline {
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1.4;
+    margin-bottom: 60px;
+    margin-top: 0;
+  }
+
+  .intro__lists {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 40px;
+  }
+
+  .intro__list {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .intro__item {
+    font-size: 15px;
+    color: #444444;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+  }
+
+  .intro__item::before {
+    content: "•";
+    margin-right: 10px;
+    color: #999999;
+  }
+  
+  /* Intro images: fit to box with 1px border */
+  .intro .intro-image {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    border: 1px solid #000000;
+    border-radius: 6px;
+    box-sizing: border-box;
+    background: #fff;
+  }
+  .intro .intro-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Booking widget styles */
+  .booking {
+    background: rgba(255,255,255,0.9);
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 24px;
+    max-width: 720px;
+  }
+  .booking h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 20px;
+  }
+  .booking-options {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .booking .park {
+    flex: 1 1 200px;
+    background: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    text-align: center;
+  }
+  .booking .park h4 {
+    margin: 8px 0;
+    font-size: 16px;
+  }
+  .book-btn {
+    background-color: #0077cc;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .book-btn:hover { background-color: #005fa3; }
+
+  /* Logo Section */
+  .logos {
+    padding-top: 60px;
+    padding-right: 40px;
+    padding-bottom: 60px;
+    padding-left: 40px;
+    background-color: #ffffffbc;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #eeeeee;
+  }
+
+  .logos__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin-top: 0;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-left: auto;
+    gap: 30px;
+  }
+
+  .logos__item {
+    opacity: 0.4;
+    font-weight: 700;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #000;
+  }
+
+  /* Services Section */
+  .services {
+    background: linear-gradient(180deg, #007aec, #ffffff);
+  }
+
+  .service-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    align-items: center;
+    min-height: 600px;
+  }
+
+  .service-row__content {
+    padding-top: 80px;
+    padding-right: 80px;
+    padding-bottom: 80px;
+    padding-left: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .service-row__image-wrapper {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background-color: #f2f615;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+
+  .service-row__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .service-row__icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 40px;
+    stroke-width: 1.5px;
+    stroke: #000;
+    fill: none;
+  }
+
+  .service-row__title {
+    font-size: 48px;
+    margin-bottom: 24px;
+    margin-top: 0;
+    font-weight: 400;
+  }
+
+  .service-row__desc {
+    font-size: 16px;
+    color: #555555;
+    max-width: 400px;
+    line-height: 1.6;
+  }
+
+  /* Pricing Section */
+  .pricing {
+    background-color: #f4f4f4;
+    padding-top: 120px;
+    padding-right: 40px;
+    padding-bottom: 120px;
+    padding-left: 40px;
+  }
+
+  .pricing__container {
+    max-width: 1200px;
+    margin-top: 0;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-left: auto;
+  }
+
+  .pricing__header {
+    margin-bottom: 60px;
+  }
+
+  .pricing__title {
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
+
+  .pricing__toggle {
+    display: flex;
+    gap: 20px;
+    font-size: 18px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #dddddd;
+    display: inline-flex;
+    padding-bottom: 10px;
+  }
+
+  .pricing__option {
+    cursor: pointer;
+    padding-bottom: 5px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: transparent;
+    transition-property: border-color, color;
+    transition-duration: 0.3s;
+  }
+
+  .pricing__option--active {
+    border-bottom-color: #000000;
+    font-weight: 500;
+  }
+
+  .pricing__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 30px;
+  }
+
+  .pricing__card {
+    background-color: #ffffff;
+    padding-top: 60px;
+    padding-right: 50px;
+    padding-bottom: 60px;
+    padding-left: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .pricing__plan-name {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #888888;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .pricing__price {
+    font-size: 60px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: baseline;
+  }
+
+  .pricing__period {
+    font-size: 20px;
+    color: #888888;
+    margin-left: 5px;
+  }
+
+  .pricing__desc {
+    font-size: 15px;
+    color: #555555;
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+
+  .pricing__features {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 40px;
+  }
+
+  .pricing__feature {
+    font-size: 14px;
+    margin-bottom: 12px;
+    color: #444444;
+    display: flex;
+    align-items: center;
+  }
+
+  .pricing__feature::before {
+    content: "•";
+    margin-right: 10px;
+    color: #cccccc;
+  }
+
+  .pricing__link {
+    font-size: 14px;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    color: #000000;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  /* CTA Marquee */
+  .cta {
+    background-color: #b0b0b0;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    overflow-x: hidden;
+    position: relative;
+    text-align: center;
+  }
+
+  .cta__label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    color: #ffffff;
+  }
+
+  .cta__dot {
+    width: 8px;
+    height: 8px;
+    background-color: #4caf50;
+    border-radius: 50%;
+  }
+
+  .cta__marquee {
+    white-space: nowrap;
+    overflow-x: hidden;
+  }
+
+  .cta__text {
+    font-size: 160px;
+    color: #ffffff;
+    line-height: 1;
+    display: inline-block;
+    animation-name: marquee;
+    animation-duration: 20s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .cta__link {
+    display: inline-block;
+    margin-top: 40px;
+    color: #ffffff;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    font-size: 18px;
+  }
+
+  /* Footer */
+  .footer {
+    background-color: #000000;
+    color: #ffffff;
+    padding-top: 100px;
+    padding-right: 40px;
+    padding-bottom: 40px;
+    padding-left: 40px;
+  }
+
+  .footer__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 60px;
+    max-width: 1200px;
+    margin-top: 0;
+    margin-right: auto;
+    margin-bottom: 80px;
+    margin-left: auto;
+  }
+
+  .footer__title {
+    font-size: 100px;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .footer__right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .footer__label {
+    font-size: 18px;
+    margin-bottom: 30px;
+    font-weight: 400;
+  }
+
+  .footer__form {
+    position: relative;
+    max-width: 400px;
+    margin-bottom: 40px;
+  }
+
+  .footer__input {
+    width: 100%;
+    background-color: transparent;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 1px;
+    border-left-width: 0;
+    border-bottom-color: #444444;
+    color: #ffffff;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 16px;
+    outline-width: 0;
+  }
+
+  .footer__input:focus {
+    border-bottom-color: #ffffff;
+  }
+
+  .footer__submit {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border-width: 0;
+    color: #ffffff;
+    cursor: pointer;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+  }
+
+  .footer__socials {
+    display: flex;
+    gap: 20px;
+  }
+
+  .footer__social-icon {
+    width: 20px;
+    height: 20px;
+    fill: #666666;
+    transition-property: fill;
+    transition-duration: 0.3s;
+  }
+
+  .footer__social-icon:hover {
+    fill: #ffffff;
+  }
+
+  .footer__bottom {
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #ffffff;
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #666666;
+  }
+
+  /* Responsive Breakpoints */
+  @media (max-width: 991px) {
+    .text-h1 { font-size: 80px; }
+    .text-h3 { font-size: 60px; }
+    
+    .intro__grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .splash-highlights__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .offers__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .service-row {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+    
+    .service-row--reverse .service-row__content {
+      order: 2;
+    }
+    
+    .service-row__image-wrapper {
+      height: 400px;
+    }
+
+    .pricing__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .footer__grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .footer__title {
+      font-size: 60px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .hero__nav {
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+    
+    .hero__menu {
+      display: none; /* Simple hide for mobile in this demo */
+    }
+
+    .text-h1 { font-size: 60px; }
+    
+    .intro {
+      padding-top: 80px;
+      padding-bottom: 80px;
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+
+    .intro__lists {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .splash-highlights__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .service-row__content {
+      padding-top: 60px;
+      padding-right: 20px;
+      padding-bottom: 60px;
+      padding-left: 20px;
+    }
+
+    .pricing {
+      padding-top: 80px;
+      padding-bottom: 80px;
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+
+    .cta__text {
+      font-size: 80px;
+    }
+
+    .footer {
+      padding-top: 60px;
+      padding-right: 20px;
+      padding-bottom: 20px;
+      padding-left: 20px;
+    }
+  }
+
+  @media (max-width: 479px) {
+    .text-h1 { font-size: 48px; }
+    .hero__content { bottom: 40px; left: 20px; }
+    
+    .logos__container {
+      justify-content: center;
+    }
+    
+    .pricing__price {
+      font-size: 48px;
+    }
+  }
+
+  /* Parks Listing Section */
+  .parks-section {
+    background: linear-gradient(180deg, #e8f4f8, #ffffff);
+    padding: 100px 40px;
+  }
+
+  .parks-section__header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .parks-section__title {
+    font-size: 48px;
+    font-weight: 700;
+    margin: 10px 0 10px;
+    color: #003566;
+  }
+
+  .parks-section__subtitle {
+    font-size: 18px;
+    color: #555;
+    margin: 0;
+  }
+
+  .park-search {
+    max-width: 600px;
+    margin: 30px auto 0;
+  }
+
+  .park-search__input {
+    width: 100%;
+    padding: 16px 24px;
+    font-size: 16px;
+    border: 2px solid #d0e8f2;
+    border-radius: 50px;
+    outline: none;
+    background: #ffffff;
+    color: #333;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .park-search__input:focus {
+    border-color: #0077b6;
+    box-shadow: 0 0 0 4px rgba(0,119,182,0.15);
+  }
+
+  .park-search__filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+
+  .park-search__filter {
+    padding: 8px 20px;
+    border: 2px solid #d0e8f2;
+    border-radius: 30px;
+    background: #ffffff;
+    color: #555;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .park-search__filter:hover {
+    border-color: #0077b6;
+    color: #0077b6;
+  }
+
+  .park-search__filter--active {
+    background: #0077b6;
+    color: #ffffff;
+    border-color: #0077b6;
+  }
+
+  .park-search__count {
+    text-align: center;
+    font-size: 14px;
+    color: #777;
+    margin-top: 12px;
+  }
+
+  .park-card--hidden {
+    display: none !important;
+  }
+
+  .parks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .park-card {
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .park-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.15);
+  }
+
+  .park-card__img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin: 0;
+  }
+
+  .park-card__body {
+    padding: 24px;
+  }
+
+  .park-card__type {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+
+  .park-card__type--water {
+    background-color: #00b4d8;
+    color: #fff;
+  }
+
+  .park-card__type--adventure {
+    background-color: #ff6b35;
+    color: #fff;
+  }
+
+  .park-card__type--both {
+    background: linear-gradient(135deg, #00b4d8, #ff6b35);
+    color: #fff;
+  }
+
+  .park-card__name {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 6px;
+    color: #1a1a1a;
+  }
+
+  .park-card__location {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 12px;
+  }
+
+  .park-card__price {
+    font-size: 16px;
+    font-weight: 600;
+    color: #0077b6;
+  }
+
+  .park-card__cta {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #0077b6;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Park Detail Modal */
+  .park-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 9999;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+    overflow-y: auto;
+  }
+
+  .park-modal-overlay.active {
+    display: flex;
+  }
+
+  .park-modal {
+    background: #ffffff;
+    border-radius: 20px;
+    max-width: 900px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    animation: modalSlideIn 0.35s ease;
+  }
+
+  @keyframes modalSlideIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .park-modal__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .park-modal__hero {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    margin: 0;
+  }
+
+  .park-modal__content {
+    padding: 40px;
+  }
+
+  .park-modal__name {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0 0 6px;
+  }
+
+  .park-modal__location {
+    font-size: 16px;
+    color: #ffffff;
+    margin-bottom: 24px;
+  }
+
+  .park-modal__section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #003566;
+    margin: 30px 0 14px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 8px;
+  }
+
+  .park-modal__section-title:first-of-type {
+    margin-top: 0;
+  }
+
+  .park-modal__info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 30px;
+  }
+
+  .park-modal__info-item {
+    font-size: 15px;
+    color: #ffffff;
+    padding: 6px 0;
+  }
+
+  .park-modal__info-item strong {
+    color: #ffffff;
+  }
+
+  .park-modal__packages {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-top: 14px;
+  }
+
+  .park-modal__pkg {
+    background: linear-gradient(135deg, #f0f7ff, #e8f4f8);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #d0e8f2;
+  }
+
+  .park-modal__pkg-name {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #003566;
+    margin-bottom: 8px;
+  }
+
+  .park-modal__pkg-price {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0077b6;
+  }
+
+  .park-modal__pkg-detail {
+    font-size: 12px;
+    color: #ffffff;
+    margin-top: 6px;
+  }
+
+  .park-modal__map {
+    width: 100%;
+    height: 300px;
+    border: none;
+    border-radius: 12px;
+    margin-top: 14px;
+  }
+
+  .park-modal__desc {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.7;
+    margin: 0 0 10px;
+  }
+
+  .park-modal__offers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 14px;
+  }
+
+  .park-modal__offer {
+    background: linear-gradient(135deg, #fff3e0, #fff8e1);
+    border-left: 4px solid #ff6b35;
+    border-radius: 8px;
+    padding: 16px 18px;
+  }
+
+  .park-modal__offer-tag {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ff6b35;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+
+  .park-modal__offer-text {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.5;
+  }
+
+  .park-modal__directions {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #0077b6;
+    text-decoration: none;
+  }
+
+  .park-modal__directions:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 767px) {
+    .park-modal__offers {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .park-modal__book-btn {
+    display: inline-block;
+    margin-top: 30px;
+    background: linear-gradient(135deg, #0077b6, #00b4d8);
+    color: #fff;
+    padding: 16px 40px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+  .park-modal__book-btn:hover {
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 767px) {
+    .park-modal__packages {
+      grid-template-columns: 1fr;
+    }
+    .park-modal__info-grid {
+      grid-template-columns: 1fr;
+    }
+    .park-modal__content {
+      padding: 24px;
+    }
+    .park-modal__hero {
+      height: 200px;
+    }
+  }
+
+/* Contact Section */
+.contact-section {
+  background-color: #f5f5f5;
+  padding: 60px 40px;
+  text-align: center;
+}
+.contact-section h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+.contact-section p {
+  font-size: 18px;
+  margin: 5px 0;
+}
+.contact-section a {
+  color: #0077cc;
+  text-decoration: none;
+}
+
+</style>
+</head>
+<body>
+<div>
+  <!-- Hero Section -->
+  <header class="hero" data-ht-hero>
+    <img src="my ad 1.jpg" alt="Abstract 3D Blue Glass Shapes" class="hero__bg">
+    
+    
+    <nav class="hero__nav">
+      <div class="hero__logo">Black Pearl Pvt Ltd</div>
+      <ul class="hero__menu">
+        <li><a href="#" class="hero__link">Home</a></li>
+        <li><a href="portfolio.html" class="hero__link">Portfolio</a></li>
+        <li><a href="blog.html" class="hero__link">Blog</a></li>
+        <li><a href="contact.html" class="hero__link">Contact</a></li>
+        <li><a href="booking.html" class="hero__link">Book Now ↗</a></li>
+        <li><a href="login.html" class="hero__link">Log In</a></li>
+      </ul>
+    </nav>
+
+    <div class="hero__content">
+      <h1 class="text-h1">Splash Into Adventure!</h1>
+    </div>
+  </header>
+
+  <!-- Deals Banner -->
+  <div class="deals-banner">
+    <p class="deals-banner__text">🌊 Summer Flash Sale — Up to 50% OFF All Day Passes! <span>Limited Time</span></p>
+  </div>
+
+  <!-- Waterparks & Adventure Parks in India -->
+  <section class="parks-section" id="parks">
+    <div class="parks-section__header">
+      <span class="text-label">Explore India</span>
+      <h2 class="parks-section__title">🏖️ Top Waterparks & Adventure Parks</h2>
+      <p class="parks-section__subtitle">Click on any park to see packages, timings, booking details & Google Maps directions!</p>
+      <div class="park-search">
+        <input type="text" id="parkSearchInput" class="park-search__input" placeholder="🔍 Search parks by name, city, or type..." autocomplete="off">
+        <div class="park-search__filters">
+          <button class="park-search__filter park-search__filter--active" data-filter="all">All</button>
+          <button class="park-search__filter" data-filter="water">💧 Waterpark</button>
+          <button class="park-search__filter" data-filter="adventure">🎢 Adventure</button>
+          <button class="park-search__filter" data-filter="both">🎯 Both</button>
+        </div>
+        <p class="park-search__count" id="parkSearchCount"></p>
+      </div>
+    </div>
+    <div class="parks-grid" id="parksGrid">
+      <div class="park-card" onclick="openParkModal(0)">
+        <img class="park-card__img" src="Imagica Theme Park.webp" alt="Imagica Theme Park">
+        <div class="park-card__body">
+          <span class="park-card__type park-card__type--both">Water + Adventure</span>
+          <h3 class="park-card__name">Imagica Theme Park</h3>
+          <p class="park-card__location">📍 Khopoli, Maharashtra</p>
+          <p class="park-card__price">Starting from ₹999</p>
+          <span class="park-card__cta">View Details & Book →</span>
+        </div>
+      </div>
+      <div class="park-card" onclick="openParkModal(1)">
+        <img class="park-card__img" src="Wet'n'Joy Water Par.webp" alt="Wet'n'Joy Water Park">
+        <div class="park-card__body">
+          <span class="park-card__type park-card__type--water">Waterpark</span>
+          <h3 class="park-card__name">Wet'n'Joy Water Park</h3>
+          <p class="park-card__location">📍 Lonavala, Maharashtra</p>
+          <p class="park-card__price">Starting from ₹899</p>
+          <span class="park-card__cta">View Details & Book →</span>
+        </div>
+      </div>
+      <div class="park-card" onclick="openParkModal(2)">
+        <img class="park-card__img" src="Wonderla Amusement Park.webp" alt="Wonderla Bangalore">
+        <div class="park-card__body">
+          <span class="park-card__type park-card__type--both">Water + Adventure</span>
+          <h3 class="park-card__name">Wonderla Amusement Park</h3>
+          <p class="park-card__location">📍 Bangalore, Karnataka</p>
+          <p class="park-card__price">Starting from ₹1,149</p>
+          <span class="park-card__cta">View Details & Book →</span>
+        </div>
+      </div>
+      <div class="park-card" onclick="openParkModal(3)">
+        <img class="park-card__img" src="Wonderla Hyderabad.webp" alt="Wonderla Hyderabad">
+        <div class="park-card__body">
+          <span class="park-card__type park-card__type--both">Water + Adventure</span>
+          <h3 class="park-card__name">Wonderla Hyderabad</h3>
+          <p class="park-card__location">📍 Hyderabad, Telangana</p>
+          <p class="park-card__price">Starting from ₹1,049</p>
+          <span class="park-card__cta">View Details & Book →</span>
+        </div>
+      </div>
+      <div class="park-card" onclick="openParkModal(4)">
+        <img class="park-card__img" src="Essel World & Water Kingdom.webp" alt="Essel World">
+        <div class="park-card__body">
+          <span class="park-card__type park-card__type--both">Water + Adventure</span>
+          <h3 class="park-card__name">Essel World & Water Kingdom</h3>
+          <p class="park-card__location">📍 Mumbai, Maharashtra</p>
+          <p class="park-card__price">Starting from ₹799</p>
+          <span class="park-card__cta">View Details & Book →</span>
+        </div>
+      </div>
+      <div class="park-card" onclick="openParkModal(5)">
+        <img class="park-card__img" src="Wonderla Kochi.webp" alt="Wonderla Kochi">
+        <div class="park-card__body">
+          <span class="park-card__type park-card__type--both">Water + Adventure</span>
+          <h3 class="park-card__name">Wonderla Kochi</h3>
+          <p class="park-card__location">📍 Kochi, Kerala</p>
+          <p class="park-card__price">Starting from ₹999</p>
+          <span class="park-card__cta">View Details & Book →</span>
+        </div>
+      </div>
+      <div class="park-card" onclick="openParkModal(6)">
+        <img class="park-card__img" src="Appu Ghar.webp" alt="Appu Ghar">
+        <div class="park-card__body">
+          <span class="park-card__type park-card__type--adventure">Adventure Park</span>
+          <h3 class="park-card__name">Appu Ghar</h3>
+          <p class="park-card__location">📍 Gurugram, Haryana</p>
+          <p class="park-card__price">Starting from ₹699</p>
+          <span class="park-card__cta">View Details & Book →</span>
+        </div>
+      </div>
+      <div class="park-card" onclick="openParkModal(7)">
+        <img class="park-card__img" src="Nicco Park.webp" alt="Nicco Park">
+        <div class="park-card__body">
+          <span class="park-card__type park-card__type--adventure">Adventure Park</span>
+          <h3 class="park-card__name">Nicco Park</h3>
+          <p class="park-card__location">📍 Kolkata, West Bengal</p>
+          <p class="park-card__price">Starting from ₹450</p>
+          <span class="park-card__cta">View Details & Book →</span>
+        </div>
+      </div>
+      <div class="park-card" onclick="openParkModal(8)">
+        <img class="park-card__img" src="Aquatica Water Park.webp" alt="Aquatica Water Park">
+        <div class="park-card__body">
+          <span class="park-card__type park-card__type--water">Waterpark</span>
+          <h3 class="park-card__name">Aquatica Water Park</h3>
+          <p class="park-card__location">📍 Kolkata, West Bengal</p>
+          <p class="park-card__price">Starting from ₹550</p>
+          <span class="park-card__cta">View Details & Book →</span>
+        </div>
+      </div>
+      <div class="park-card" onclick="openParkModal(9)">
+        <img class="park-card__img" src="GRS Fantasy Park.webp" alt="GRS Fantasy Park">
+        <div class="park-card__body">
+          <span class="park-card__type park-card__type--both">Water + Adventure</span>
+          <h3 class="park-card__name">GRS Fantasy Park</h3>
+          <p class="park-card__location">📍 Mysore, Karnataka</p>
+          <p class="park-card__price">Starting from ₹599</p>
+          <span class="park-card__cta">View Details & Book →</span>
+        </div>
+      </div>
+      <div class="park-card" onclick="openParkModal(10)">
+        <img class="park-card__img" src="Black Thunder Water Theme Par.webp" alt="Black Thunder">
+        <div class="park-card__body">
+          <span class="park-card__type park-card__type--water">Waterpark</span>
+          <h3 class="park-card__name">Black Thunder Water Theme Park</h3>
+          <p class="park-card__location">📍 Mettupalayam, Tamil Nadu</p>
+          <p class="park-card__price">Starting from ₹750</p>
+          <span class="park-card__cta">View Details & Book →</span>
+        </div>
+      </div>
+      <div class="park-card" onclick="openParkModal(11)">
+        <img class="park-card__img" src="Della Adventure Park.webp" alt="Della Adventure Park">
+        <div class="park-card__body">
+          <span class="park-card__type park-card__type--adventure">Adventure Park</span>
+          <h3 class="park-card__name">Della Adventure Park</h3>
+          <p class="park-card__location">📍 Lonavala, Maharashtra</p>
+          <p class="park-card__price">Starting from ₹1,499</p>
+          <span class="park-card__cta">View Details & Book →</span>
+        </div>
+      </div>
+      <div class="park-card" onclick="openParkModal(12)">
+        <img class="park-card__img" src="Maniar's Wonderland.webp" alt="Maniar's Wonderland">
+        <div class="park-card__body">
+          <span class="park-card__type park-card__type--both">Water + Adventure</span>
+          <h3 class="park-card__name">Maniar's Wonderland</h3>
+          <p class="park-card__location">📍 Ahmedabad, Gujarat</p>
+          <p class="park-card__price">Starting from ₹499</p>
+          <span class="park-card__cta">View Details & Book →</span>
+        </div>
+      </div>
+      <div class="park-card" onclick="openParkModal(13)">
+        <img class="park-card__img" src="imagica.jpeg" alt="Jalavihar Water Park">
+        <div class="park-card__body">
+          <span class="park-card__type park-card__type--water">Waterpark</span>
+          <h3 class="park-card__name">Jalavihar Water Park</h3>
+          <p class="park-card__location">📍 Hyderabad, Telangana</p>
+          <p class="park-card__price">Starting from ₹350</p>
+          <span class="park-card__cta">View Details & Book →</span>
+        </div>
+      </div>
+      <div class="park-card" onclick="openParkModal(14)">
+        <img class="park-card__img" src="Fun World Amusement Park.webp" alt="Fun World">
+        <div class="park-card__body">
+          <span class="park-card__type park-card__type--adventure">Adventure Park</span>
+          <h3 class="park-card__name">Fun World Amusement Park</h3>
+          <p class="park-card__location">📍 Bangalore, Karnataka</p>
+          <p class="park-card__price">Starting from ₹599</p>
+          <span class="park-card__cta">View Details & Book →</span>
+        </div>
+      </div>
+      <div class="park-card" onclick="openParkModal(15)">
+        <img class="park-card__img" src="Drizzling Land Water & Amusement Park.webp" alt="Drizzling Land">
+        <div class="park-card__body">
+          <span class="park-card__type park-card__type--both">Water + Adventure</span>
+          <h3 class="park-card__name">Drizzling Land Water & Amusement Park</h3>
+          <p class="park-card__location">📍 Ghaziabad, Uttar Pradesh</p>
+          <p class="park-card__price">Starting from ₹699</p>
+          <span class="park-card__cta">View Details & Book →</span>
+        </div>
+      </div>
+      <div class="park-card" onclick="openParkModal(16)">
+        <img class="park-card__img" src="Innovative Film City.webp" alt="Innovative Film City">
+        <div class="park-card__body">
+          <span class="park-card__type park-card__type--adventure">Adventure Park</span>
+          <h3 class="park-card__name">Innovative Film City</h3>
+          <p class="park-card__location">📍 Bangalore, Karnataka</p>
+          <p class="park-card__price">Starting from ₹849</p>
+          <span class="park-card__cta">View Details & Book →</span>
+        </div>
+      </div>
+      <div class="park-card" onclick="openParkModal(17)">
+        <img class="park-card__img" src="Worlds of Wonder.webp" alt="Worlds of Wonder">
+        <div class="park-card__body">
+          <span class="park-card__type park-card__type--both">Water + Adventure</span>
+          <h3 class="park-card__name">Worlds of Wonder</h3>
+          <p class="park-card__location">📍 Noida, Uttar Pradesh</p>
+          <p class="park-card__price">Starting from ₹799</p>
+          <span class="park-card__cta">View Details & Book →</span>
+        </div>
+      </div>
+      <div class="park-card" onclick="openParkModal(18)">
+        <img class="park-card__img" src="Kishkinta Theme Park.webp" alt="Kishkinta Theme Park">
+        <div class="park-card__body">
+          <span class="park-card__type park-card__type--both">Water + Adventure</span>
+          <h3 class="park-card__name">Kishkinta Theme Park</h3>
+          <p class="park-card__location">📍 Chennai, Tamil Nadu</p>
+          <p class="park-card__price">Starting from ₹649</p>
+          <span class="park-card__cta">View Details & Book →</span>
+        </div>
+      </div>
+      <div class="park-card" onclick="openParkModal(19)">
+        <img class="park-card__img" src="Amaazia Water & Adventure Park.webp" alt="Amaazia Water Park">
+        <div class="park-card__body">
+          <span class="park-card__type park-card__type--both">Water + Adventure</span>
+          <h3 class="park-card__name">Amaazia Water & Adventure Park</h3>
+          <p class="park-card__location">📍 Surat, Gujarat</p>
+          <p class="park-card__price">Starting from ₹799</p>
+          <span class="park-card__cta">View Details & Book →</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Splash Highlights -->
+  <section class="splash-highlights">
+    
+    <div class="splash-highlights__grid">
+      <div class="splash-card">
+        <span class="splash-card__emoji">🎢</span>
+        <div class="splash-card__title">30+ Thrilling Slides</div>
+        <p class="splash-card__text">From heart-pounding free-falls to lazy river twists — we have a slide for every level of bravery!</p>
+      </div>
+      <div class="splash-card">
+        <span class="splash-card__emoji">🌊</span>
+        <div class="splash-card__title">Giant Wave Pool</div>
+        <p class="splash-card__text">Ride ocean-sized waves without leaving the city! Our wave pool delivers the ultimate surfing experience.</p>
+      </div>
+      <div class="splash-card">
+        <span class="splash-card__emoji">👨‍👩‍👧‍👦</span>
+        <div class="splash-card__title">Family Fun Zone</div>
+        <p class="splash-card__text">Splash pads, kiddie pools, and safe water play areas designed for families with kids of all ages.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro Section -->
+  <section class="intro" data-ht-intro>
+    <div class="intro__grid">
+      <div class="intro__col-left">
+        <span class="text-label"></span>
+      </div>
+      <div class="intro__col-right">
+        <h2 class="intro__headline">Dive into the most electrifying waterpark experience! With jaw-dropping rides, crystal-clear pools, and non-stop entertainment — every visit is an unforgettable adventure. 💦</h2>
+        <div class="intro__lists">
+          <ul class="intro__list">
+            <li class="intro__item">30+ Extreme Water Slides</li>
+            <li class="intro__item">Lazy River & Wave Pool</li>
+            <li class="intro__item">Private VIP Cabanas</li>
+            <li class="intro__item">Kids Splash Zone</li>
+          </ul>
+          <ul class="intro__list">
+            <li class="intro__item">Night Swimming Events</li>
+            <li class="intro__item">Food Courts & Poolside Bars</li>
+            <li class="intro__item">Group & Birthday Packages</li>
+            <li class="intro__item">Season Passes Available</li>
+          </ul>
+        </div>
+        <!-- Booking CTA -->
+        <div class="booking-cta">
+          <a href="booking.html" class="offer-card__cta">Book Your Visit →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ 
+
+  <!-- Services Section -->
+  <section class="services" data-ht-services>
+    <!-- Row 1: Mega Slides -->
+    <div class="service-row">
+      <div class="service-row__content">
+        <svg class="service-row__icon" viewBox="0 0 24 24">
+          <path d="M4 4c4 0 4 8 8 8s4-8 8-8" stroke="currentColor" fill="none"/>
+          <path d="M4 8c4 0 4 8 8 8s4-8 8-8" stroke="currentColor" fill="none"/>
+          <path d="M20 16v4H4" stroke="currentColor" fill="none"/>
+        </svg>
+        <h3 class="service-row__title">Mega Slides</h3>
+        <p class="service-row__desc">Scream your lungs out on our legendary Tornado Twister, Freefall Plunge, and the brand-new AquaLoop — the fastest enclosed slide in the region! Not for the faint-hearted. 🎢</p>
+      </div>
+      <div class="service-row__image-wrapper">
+        <img src="my ad 2.jpg" alt="Exciting waterpark slides" class="service-row__img">
+      </div>
+    </div>
+
+    <!-- Row 2: Wave Pool & Lazy River -->
+    <div class="service-row">
+      <div class="service-row__image-wrapper">
+        <img src="my ad3.jpg" alt="Crystal clear wave pool" class="service-row__img">
+      </div>
+      <div class="service-row__content">
+        <svg class="service-row__icon" viewBox="0 0 24 24">
+          <path d="M2 12c2-2 4-2 6 0s4 2 6 0 4-2 6 0" stroke="currentColor" fill="none"/>
+          <path d="M2 16c2-2 4-2 6 0s4 2 6 0 4-2 6 0" stroke="currentColor" fill="none"/>
+          <path d="M2 8c2-2 4-2 6 0s4 2 6 0 4-2 6 0" stroke="currentColor" fill="none"/>
+        </svg>
+        <h3 class="service-row__title">Wave Pool & Lazy River</h3>
+        <p class="service-row__desc">Catch monster waves in our Olympic-sized wave pool or float through a tropical paradise on the mile-long lazy river. Pure bliss under the sun! ☀️</p>
+      </div>
+    </div>
+
+    <!-- Row 3: VIP Experience -->
+    <div class="service-row">
+      <div class="service-row__content">
+        <svg class="service-row__icon" viewBox="0 0 24 24">
+          <path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z" stroke="currentColor" fill="none"/>
+        </svg>
+        <h3 class="service-row__title">VIP Cabana Experience</h3>
+        <p class="service-row__desc">Upgrade to luxury! Private cabanas with personal attendants, premium food service, express ride access, and complimentary towels & lockers. You deserve the splash of a lifetime! ✨</p>
+      </div>
+      <div class="service-row__image-wrapper">
+        <img src="https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?q=80&w=2574&auto=format&fit=crop" alt="VIP Cabana experience" class="service-row__img">
+      </div>
+    </div>
+  </section>
+
+  <!-- Special Offers Section -->
+  <section class="offers">
+    <div class="offers__header">
+      <span class="text-label" style="color: #00b4d8;">Hot Deals</span>
+      <h2 class="offers__title">🔥 Exclusive Waterpark Offers</h2>
+      <p class="offers__subtitle">Grab these deals before they dry up!</p>
+    </div>
+    <div class="offers__grid">
+      <div class="offer-card offer-card--hot">
+        <span class="offer-card__badge">Best Seller</span>
+        <div class="offer-card__name">Family Splash Bundle</div>
+        <p class="offer-card__desc">4 all-day passes + 1 free meal combo + free parking. The ultimate family day out at an unbeatable price!</p>
+        <div class="offer-card__price"><s>₹1199</s> ₹1999</div>
+        <a href="#" class="offer-card__cta">Grab This Deal →</a>
+      </div>
+      <div class="offer-card">
+        <span class="offer-card__badge">New</span>
+        <div class="offer-card__name">Sunset Splash Party</div>
+        <p class="offer-card__desc">After 5 PM entry with DJ music, LED-lit pools, unlimited drinks, and access to all night rides. Every Friday & Saturday!</p>
+        <div class="offer-card__price"><s>₹1179</s> ₹1399</div>
+        <a href="#" class="offer-card__cta">Book Tonight →</a>
+      </div>
+      <div class="offer-card">
+        <div class="offer-card__name">Season Pass — All Access</div>
+        <p class="offer-card__desc">Unlimited visits for the entire season! Includes express lane, 10% food discount, and free guest passes every month.</p>
+        <div class="offer-card__price"><s>₹1499</s> ₹1249</div>
+        <a href="#" class="offer-card__cta">Get Season Pass →</a>
+      </div>
+      <div class="offer-card offer-card--hot">
+        <span class="offer-card__badge">Best Seller</span>
+        <div class="offer-card__name">Family Splash Bundle</div>
+        <p class="offer-card__desc">4 all-day passes + 1 free meal combo + free parking. The ultimate family day out at an unbeatable price!</p>
+        <div class="offer-card__price"><s>₹1199</s> ₹1999</div>
+        <a href="#" class="offer-card__cta">Grab This Deal →</a>
+      </div>
+      <div class="offer-card">
+        <span class="offer-card__badge">New</span>
+        <div class="offer-card__name">Sunset Splash Party</div>
+        <p class="offer-card__desc">After 5 PM entry with DJ music, LED-lit pools, unlimited drinks, and access to all night rides. Every Friday & Saturday!</p>
+        <div class="offer-card__price"><s>₹1179</s> ₹1399</div>
+        <a href="#" class="offer-card__cta">Book Tonight →</a>
+      </div>
+      <div class="offer-card">
+        <div class="offer-card__name">Season Pass — All Access</div>
+        <p class="offer-card__desc">Unlimited visits for the entire season! Includes express lane, 10% food discount, and free guest passes every month.</p>
+        <div class="offer-card__price"><s>₹1499</s> ₹1249</div>
+        <a href="#" class="offer-card__cta">Get Season Pass →</a>
+      </div>
+    
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <img src="vecteezy_ai-generated-playful-dolphins-in-the-vibrant-underwater_35564793.png">
+    <div class="contact-content">
+      <h2>Contact Us</h2>
+      <p><strong>Company:</strong> Black Pearl Pvt Ltd</p>
+      <p><strong>Phone:</strong> +91-1234567890</p>
+      <p><strong>Email:</strong> <a href="mailto:blackpearl26@gmail.com">blackpearl26@gmail.com</a></p>
+      <p><strong>Address:</strong> 123 Ocean Drive, Beach City, Country</p>
+    </div>
+  </section>
+
+</div>
+
+<!-- Park Detail Modal (outside wrapper for proper z-index) -->
+<div class="park-modal-overlay" id="parkModalOverlay">
+  <div class="park-modal">
+    <button class="park-modal__close" id="parkModalClose">&times;</button>
+    <img class="park-modal__hero" id="modalHeroImg" src="" alt="">
+    <div class="park-modal__content">
+      <h2 class="park-modal__name" id="modalName"></h2>
+      <p class="park-modal__location" id="modalLocation"></p>
+
+      <p class="park-modal__desc" id="modalDesc"></p>
+
+      <h3 class="park-modal__section-title">⏰ Timings & Info</h3>
+      <div class="park-modal__info-grid" id="modalInfo"></div>
+
+      <h3 class="park-modal__section-title">🎟️ Packages & Pricing</h3>
+      <div class="park-modal__packages" id="modalPackages"></div>
+
+      <h3 class="park-modal__section-title">🔥 Special Offers</h3>
+      <div class="park-modal__offers" id="modalOffers"></div>
+
+      <h3 class="park-modal__section-title">📍 Location & Route (Google Maps)</h3>
+      <iframe class="park-modal__map" id="modalMap" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <a class="park-modal__directions" id="modalDirections" href="#" target="_blank">🧭 Get Directions on Google Maps →</a>
+
+      <div style="text-align:center;">
+        <a class="park-modal__book-btn" id="modalBookBtn" href="booking.html">Book Now →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    // ========== Parks Data (global scope for onclick handlers) ==========
+    var parks = [
+        {
+          name: "Imagica Theme Park",
+          location: "Khopoli, Maharashtra",
+          type: "both",
+          image: "https://images.unsplash.com/photo-1559825481-12a05cc00344?w=600&auto=format",
+          startPrice: "₹999",
+          description: "India's premier international-standard theme park with thrilling roller coasters, a dedicated water park, snow world, and spectacular live shows. Perfect for family outings and adrenaline junkies alike!",
+          timings: "10:00 AM – 8:00 PM",
+          days: "Open all days",
+          phone: "+91 22 6869 9999",
+          highlights: "Theme rides, Water Kingdom, Snow Park, Live Shows",
+          packages: [
+            { name: "Adult", price: "₹1,299", detail: "Full-day access to all rides" },
+            { name: "Child", price: "₹999", detail: "Height below 4.5 ft" },
+            { name: "VIP Combo", price: "₹2,499", detail: "Theme + Water + Meal" }
+          ],
+          offers: [
+            { tag: "Summer Special", text: "Buy 2 Get 1 Free on weekday adult tickets!" },
+            { tag: "Early Bird", text: "Book 7 days in advance & get 20% OFF" }
+          ],
+          mapQuery: "Imagica+Theme+Park+Khopoli"
+        },
+        {
+          name: "Wet'n'Joy Water Park",
+          location: "Lonavala, Maharashtra",
+          type: "water",
+          image: "https://images.unsplash.com/photo-1506953823-bd38b0cb21cd?w=600&auto=format",
+          startPrice: "₹899",
+          description: "Maharashtra's largest water park featuring 30+ international-standard slides nestled in the scenic Sahyadri mountains. A must-visit splash destination near Mumbai & Pune!",
+          timings: "10:00 AM – 6:00 PM",
+          days: "Open all days",
+          phone: "+91 20 6764 0000",
+          highlights: "30+ Water Slides, Wave Pool, Rain Dance, Lazy River",
+          packages: [
+            { name: "Adult", price: "₹1,099", detail: "All rides + locker" },
+            { name: "Child", price: "₹899", detail: "Below 4 ft height" },
+            { name: "Family (4)", price: "₹3,499", detail: "2 Adults + 2 Kids + Meal" }
+          ],
+          offers: [
+            { tag: "Monsoon Mania", text: "Flat 30% OFF during monsoon season (Jul–Sep)" },
+            { tag: "Couple Deal", text: "2 adult passes + locker + meal at ₹1,799" }
+          ],
+          mapQuery: "Wet+n+Joy+Lonavala"
+        },
+        {
+          name: "Wonderla Amusement Park",
+          location: "Bangalore, Karnataka",
+          type: "both",
+          image: "https://images.unsplash.com/photo-1513889961551-628c1e5e2ee9?w=600&auto=format",
+          startPrice: "₹1,149",
+          description: "South India's most popular amusement park with 60+ land and water rides. Experience the legendary Recoil roller coaster, Rain Disco, and the massive wave pool!",
+          timings: "11:00 AM – 6:00 PM",
+          days: "Closed on Tuesdays",
+          phone: "+91 80 2201 0303",
+          highlights: "60+ Rides, Wave Pool, Recoil, Maverick, Rain Disco",
+          packages: [
+            { name: "Adult", price: "₹1,349", detail: "All dry + water rides" },
+            { name: "Child", price: "₹1,149", detail: "90cm to 140cm height" },
+            { name: "Fastrack", price: "₹2,199", detail: "Skip-the-line access" }
+          ],
+          offers: [
+            { tag: "Fastrack Free", text: "Book online & get free Fastrack upgrade on weekdays!" },
+            { tag: "Student Discount", text: "Show valid ID for 15% OFF on entry" }
+          ],
+          mapQuery: "Wonderla+Bangalore"
+        },
+        {
+          name: "Wonderla Hyderabad",
+          location: "Hyderabad, Telangana",
+          type: "both",
+          image: "https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?w=600&auto=format",
+          startPrice: "₹1,049",
+          description: "Hyderabad's ultimate fun destination with 45+ high-thrill dry & water rides. Home to the Hurricane and Boomerang — rides that'll leave you breathless!",
+          timings: "11:00 AM – 6:00 PM",
+          days: "Closed on Tuesdays",
+          phone: "+91 40 2354 8484",
+          highlights: "45+ Rides, Hurricane, Wavy, Boomerang, Crazy Cars",
+          packages: [
+            { name: "Adult", price: "₹1,249", detail: "All rides included" },
+            { name: "Child", price: "₹1,049", detail: "90cm to 140cm height" },
+            { name: "Group (10+)", price: "₹999/head", detail: "Min 10 people required" }
+          ],
+          offers: [
+            { tag: "Group Saver", text: "Groups of 10+ get ₹250 OFF per person" },
+            { tag: "Weekend Combo", text: "Sat-Sun combo: 2-day pass at ₹1,699" }
+          ],
+          mapQuery: "Wonderla+Hyderabad"
+        },
+        {
+          name: "Essel World & Water Kingdom",
+          location: "Mumbai, Maharashtra",
+          type: "both",
+          image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format",
+          startPrice: "₹799",
+          description: "Mumbai's iconic twin parks — Essel World for adrenaline-pumping dry rides and Water Kingdom for refreshing aqua thrills. A legendary entertainment destination since 1989!",
+          timings: "10:00 AM – 7:00 PM",
+          days: "Open all days",
+          phone: "+91 22 6528 3838",
+          highlights: "Shot-N-Drop, Top Spin, Aqua Loop, Zip Zap Zoom",
+          packages: [
+            { name: "Essel World", price: "₹999", detail: "Dry rides only" },
+            { name: "Water Kingdom", price: "₹1,099", detail: "All water attractions" },
+            { name: "Combo Pass", price: "₹1,599", detail: "Both parks + meal" }
+          ],
+          offers: [
+            { tag: "Combo Save", text: "Book both parks together & save ₹500!" },
+            { tag: "Birthday Free", text: "Free entry on your birthday with valid ID" }
+          ],
+          mapQuery: "Essel+World+Mumbai"
+        },
+        {
+          name: "Wonderla Kochi",
+          location: "Kochi, Kerala",
+          type: "both",
+          image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&auto=format",
+          startPrice: "₹999",
+          description: "Kerala's favourite amusement park surrounded by lush greenery. Features Flash Tower, Sky Drop, and a stunning musical fountain show every evening!",
+          timings: "11:00 AM – 6:00 PM",
+          days: "Closed on Tuesdays",
+          phone: "+91 484 268 4001",
+          highlights: "Flash Tower, Sky Drop, Boomerang, Musical Fountain",
+          packages: [
+            { name: "Adult", price: "₹1,149", detail: "All rides access" },
+            { name: "Child", price: "₹999", detail: "Under 140cm height" },
+            { name: "Season Pass", price: "₹3,999", detail: "Unlimited visits for 3 months" }
+          ],
+          offers: [
+            { tag: "Season Deal", text: "Season pass holders get 1 free guest pass/month" },
+            { tag: "Onam Special", text: "Flat 25% OFF during Onam festival week" }
+          ],
+          mapQuery: "Wonderla+Kochi"
+        },
+        {
+          name: "Appu Ghar",
+          location: "Gurugram, Haryana",
+          type: "adventure",
+          image: "https://images.unsplash.com/photo-1472457897821-70d0890346d4?w=600&auto=format",
+          startPrice: "₹699",
+          description: "India's first amusement park, now reinvented! Located in the heart of Gurugram with thrilling rides, a horror house, and fun-filled zones for all ages.",
+          timings: "11:00 AM – 8:00 PM",
+          days: "Open all days",
+          phone: "+91 124 471 5100",
+          highlights: "Skyfall, Road Runner, Bumper Cars, Horror House",
+          packages: [
+            { name: "Basic", price: "₹699", detail: "10 rides included" },
+            { name: "Unlimited", price: "₹1,199", detail: "All rides unlimited" },
+            { name: "Birthday Bash", price: "₹12,999", detail: "10 kids + cake + decorations" }
+          ],
+          offers: [
+            { tag: "Weekday Deal", text: "Mon–Thu unlimited rides at just ₹899!" },
+            { tag: "Party Pack", text: "Book birthday bash & get 2 extra passes free" }
+          ],
+          mapQuery: "Appu+Ghar+Gurugram"
+        },
+        {
+          name: "Nicco Park",
+          location: "Kolkata, West Bengal",
+          type: "adventure",
+          image: "https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?w=600&auto=format",
+          startPrice: "₹450",
+          description: "Kolkata's beloved amusement park spread across 40 acres. Enjoy the Cyclone roller coaster, Water Chute, and the charming Toy Train ride through lush gardens!",
+          timings: "10:30 AM – 7:30 PM",
+          days: "Closed on Mondays",
+          phone: "+91 33 2358 5606",
+          highlights: "Cyclone, Water Chute, Pirate Ship, Toy Train",
+          packages: [
+            { name: "Entry Only", price: "₹450", detail: "Park entry + 3 free rides" },
+            { name: "All Rides", price: "₹750", detail: "Unlimited ride access" },
+            { name: "Couple Special", price: "₹1,299", detail: "2 unlimited passes + snacks" }
+          ],
+          offers: [
+            { tag: "Durga Puja", text: "50% OFF during Durga Puja festive week" },
+            { tag: "Family Friday", text: "Family of 4 at ₹2,199 every Friday" }
+          ],
+          mapQuery: "Nicco+Park+Kolkata"
+        },
+        {
+          name: "Aquatica Water Park",
+          location: "Kolkata, West Bengal",
+          type: "water",
+          image: "https://images.unsplash.com/photo-1504309092620-4d0ec726efa4?w=600&auto=format",
+          startPrice: "₹550",
+          description: "Eastern India's largest water park with the thrilling Tornado slide, Black Hole tunnel, and a massive Niagara Falls replica. Cool off in Kolkata's summer heat!",
+          timings: "10:00 AM – 6:00 PM",
+          days: "Open all days",
+          phone: "+91 33 2573 1515",
+          highlights: "Tornado, Black Hole, Niagara Falls, Lazy River",
+          packages: [
+            { name: "Adult", price: "₹750", detail: "All water attractions" },
+            { name: "Child", price: "₹550", detail: "Under 3.5 ft height" },
+            { name: "Family Pack", price: "₹2,499", detail: "4 entries + lockers + meal" }
+          ],
+          offers: [
+            { tag: "Summer Splash", text: "Free locker + towel with every adult ticket in summer" },
+            { tag: "Ladies Day", text: "Women get 40% OFF every Wednesday" }
+          ],
+          mapQuery: "Aquatica+Water+Park+Kolkata"
+        },
+        {
+          name: "GRS Fantasy Park",
+          location: "Mysore, Karnataka",
+          type: "both",
+          image: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&auto=format",
+          startPrice: "₹599",
+          description: "Mysore's top family entertainment spot with a perfect mix of dry rides, water attractions, go-kart racing, and bungee jumping. Fun for the whole family!",
+          timings: "10:30 AM – 5:30 PM",
+          days: "Open all days",
+          phone: "+91 821 297 1888",
+          highlights: "Wave Pool, Pendulum, Tora Tora, Go-Kart, Bungee",
+          packages: [
+            { name: "Dry Rides", price: "₹599", detail: "All amusement rides" },
+            { name: "Water + Dry", price: "₹899", detail: "Complete park access" },
+            { name: "School Group", price: "₹399/head", detail: "Min 30 students" }
+          ],
+          offers: [
+            { tag: "School Trip", text: "Schools get 35% OFF for groups of 30+ students" },
+            { tag: "Dasara Special", text: "Free Go-Kart ride during Mysore Dasara" }
+          ],
+          mapQuery: "GRS+Fantasy+Park+Mysore"
+        },
+        {
+          name: "Black Thunder Water Theme Park",
+          location: "Mettupalayam, Tamil Nadu",
+          type: "water",
+          image: "https://images.unsplash.com/photo-1517649763962-0c623066013b?w=600&auto=format",
+          startPrice: "₹750",
+          description: "Set amidst the Nilgiris foothills, this resort-style water park offers Thunder Falls, Space Bowl, and serene resort stays. A perfect weekend getaway from Coimbatore!",
+          timings: "9:30 AM – 5:30 PM",
+          days: "Open all days",
+          phone: "+91 4254 222 333",
+          highlights: "Thunder Falls, Crazy River, Space Bowl, Multi-Lane Racer",
+          packages: [
+            { name: "Adult", price: "₹950", detail: "All water rides access" },
+            { name: "Child", price: "₹750", detail: "Below 4.5 ft height" },
+            { name: "Stay + Play", price: "₹2,999", detail: "1 night resort + full-day pass" }
+          ],
+          offers: [
+            { tag: "Stay & Play", text: "Resort stay + 2 day passes at just ₹4,999" },
+            { tag: "Pongal Offer", text: "Buy 3 Get 1 Free during Pongal festival" }
+          ],
+          mapQuery: "Black+Thunder+Water+Theme+Park+Mettupalayam"
+        },
+        {
+          name: "Della Adventure Park",
+          location: "Lonavala, Maharashtra",
+          type: "adventure",
+          image: "https://images.unsplash.com/photo-1530870110042-98b2cb110834?w=600&auto=format",
+          startPrice: "₹1,499",
+          description: "India's largest adventure park with 50+ extreme activities including bungee jumping, zip-lining, ATV off-roading, paintball, and the terrifying Swoop Swing!",
+          timings: "9:00 AM – 6:00 PM",
+          days: "Open all days",
+          phone: "+91 20 6763 3333",
+          highlights: "Bungee Jump, Zip Line, ATV Rides, Paintball, Swoop Swing",
+          packages: [
+            { name: "Starter (5)", price: "₹1,499", detail: "Any 5 adventure activities" },
+            { name: "Thrill (10)", price: "₹2,499", detail: "Any 10 activities" },
+            { name: "All Access", price: "₹3,999", detail: "Unlimited all 50+ activities" }
+          ],
+          offers: [
+            { tag: "Thrill Seeker", text: "All Access pass + free camping at ₹5,999" },
+            { tag: "Corporate", text: "Corporate team outings: 20% OFF for 15+ people" }
+          ],
+          mapQuery: "Della+Adventure+Park+Lonavala"
+        },
+        {
+          name: "Maniar's Wonderland",
+          location: "Ahmedabad, Gujarat",
+          type: "both",
+          image: "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=600&auto=format",
+          startPrice: "₹499",
+          description: "Ahmedabad's favourite family fun destination with a unique Snow Park experience, exciting water slides, amusement rides, and go-kart racing all under one roof!",
+          timings: "10:00 AM – 9:00 PM",
+          days: "Open all days",
+          phone: "+91 79 2657 2222",
+          highlights: "Snow Park, Water Park, Amusement Rides, Go Kart",
+          packages: [
+            { name: "Water Park", price: "₹599", detail: "All water slides & pools" },
+            { name: "Snow Park", price: "₹499", detail: "45 min snow experience" },
+            { name: "Mega Combo", price: "₹1,199", detail: "Water + Snow + Rides" }
+          ],
+          offers: [
+            { tag: "Snow + Splash", text: "Snow Park + Water Park combo at just ₹849" },
+            { tag: "Night Pass", text: "After 6 PM entry to rides at flat ₹299" }
+          ],
+          mapQuery: "Maniars+Wonderland+Ahmedabad"
+        },
+        {
+          name: "Jalavihar Water Park",
+          location: "Hyderabad, Telangana",
+          type: "water",
+          image: "https://images.unsplash.com/photo-1502933691298-84fc14542831?w=600&auto=format",
+          startPrice: "₹350",
+          description: "A refreshing oasis right in the heart of Hyderabad at Necklace Road. Affordable fun with wave pools, rain dance floors, and family-friendly water slides!",
+          timings: "10:30 AM – 7:00 PM",
+          days: "Open all days",
+          phone: "+91 40 2332 1520",
+          highlights: "Wave Pool, Rain Dance, Water Slides, Mushroom Shower",
+          packages: [
+            { name: "Adult", price: "₹450", detail: "All water attractions" },
+            { name: "Child", price: "₹350", detail: "Under 3.5 ft height" },
+            { name: "Group (20+)", price: "₹299/head", detail: "Min 20 people" }
+          ],
+          offers: [
+            { tag: "Budget Splash", text: "Weekday entry at just ₹299 per person!" },
+            { tag: "School Picnic", text: "School groups of 50+ get 40% OFF" }
+          ],
+          mapQuery: "Jalavihar+Water+Park+Hyderabad"
+        },
+        {
+          name: "Fun World Amusement Park",
+          location: "Bangalore, Karnataka",
+          type: "adventure",
+          image: "https://images.unsplash.com/photo-1536768139911-e290a59011e4?w=600&auto=format",
+          startPrice: "₹599",
+          description: "Bangalore's classic amusement park located in the heart of the city. Features a giant wheel, roller coaster, Columbus ship, and the mind-bending Mirror Maze!",
+          timings: "11:00 AM – 7:00 PM",
+          days: "Open all days",
+          phone: "+91 80 2658 8585",
+          highlights: "Giant Wheel, Roller Coaster, Columbus, Mirror Maze",
+          packages: [
+            { name: "Basic", price: "₹599", detail: "8 rides included" },
+            { name: "Premium", price: "₹999", detail: "Unlimited dry rides" },
+            { name: "Family (4)", price: "₹2,999", detail: "4 unlimited passes + snacks" }
+          ],
+          offers: [
+            { tag: "Family Pack", text: "Family of 4 unlimited passes + snacks at ₹2,599" },
+            { tag: "Midweek Fun", text: "Tue–Thu: Premium pass at Basic price!" }
+          ],
+          mapQuery: "Fun+World+Amusement+Park+Bangalore"
+        },
+        {
+          name: "Drizzling Land Water & Amusement Park",
+          location: "Ghaziabad, Uttar Pradesh",
+          type: "both",
+          image: "https://images.unsplash.com/photo-1590076215667-875d4ef2d7de?w=600&auto=format",
+          startPrice: "₹699",
+          description: "NCR's favourite water and amusement park with thrilling tornado slides, rain dance arena, and a full amusement zone. Perfect day trip from Delhi!",
+          timings: "10:00 AM – 7:00 PM",
+          days: "Open all days",
+          phone: "+91 120 410 5050",
+          highlights: "Family Pool, Tornado Slide, Rain Dance, Amusement Zone",
+          packages: [
+            { name: "Water Park", price: "₹799", detail: "All water rides" },
+            { name: "Dry Rides", price: "₹699", detail: "All amusement rides" },
+            { name: "Full Combo", price: "₹1,299", detail: "Water + Dry + Meal" }
+          ],
+          offers: [
+            { tag: "Combo Saver", text: "Full Combo pass + free parking at ₹1,099" },
+            { tag: "Holi Splash", text: "Special Holi party with colours & DJ at ₹599" }
+          ],
+          mapQuery: "Drizzling+Land+Water+Park+Ghaziabad"
+        },
+        {
+          name: "Innovative Film City",
+          location: "Bangalore, Karnataka",
+          type: "adventure",
+          image: "https://images.unsplash.com/photo-1551524164-687a55d8cccc?w=600&auto=format",
+          startPrice: "₹849",
+          description: "A unique entertainment hub with a wax museum, dinosaur park, haunted mansion, mirror maze, go-kart track, and Bollywood-themed attractions!",
+          timings: "10:00 AM – 6:30 PM",
+          days: "Open all days",
+          phone: "+91 80 2720 8888",
+          highlights: "Wax Museum, Dino Park, Haunted Mansion, Mirror Maze, Go-Kart",
+          packages: [
+            { name: "Standard", price: "₹849", detail: "All indoor attractions" },
+            { name: "Premium", price: "₹1,199", detail: "All attractions + rides" },
+            { name: "School Trip", price: "₹549/head", detail: "Min 50 students" }
+          ],
+          offers: [
+            { tag: "Online Only", text: "Book online & get free Go-Kart ride worth ₹200" },
+            { tag: "School Deal", text: "Teachers enter free with school groups of 50+" }
+          ],
+          mapQuery: "Innovative+Film+City+Bangalore"
+        },
+        {
+          name: "Worlds of Wonder",
+          location: "Noida, Uttar Pradesh",
+          type: "both",
+          image: "https://images.unsplash.com/photo-1563911302283-d2bc129e7570?w=600&auto=format",
+          startPrice: "₹799",
+          description: "Delhi-NCR's largest amusement and water park right next to the Great India Place mall. Features La Fiesta, Mega Disco, and the splash-tastic Rapid Racer!",
+          timings: "11:00 AM – 7:00 PM",
+          days: "Open all days",
+          phone: "+91 120 456 7890",
+          highlights: "La Fiesta, Mega Disco, Rapid Racer, Splash Divers",
+          packages: [
+            { name: "Water Rides", price: "₹999", detail: "All water attractions" },
+            { name: "Amusement", price: "₹799", detail: "All dry rides" },
+            { name: "Super Saver", price: "₹1,499", detail: "Both zones + Go-Kart" }
+          ],
+          offers: [
+            { tag: "Super Saver", text: "Both zones + Go-Kart + meal at ₹1,299" },
+            { tag: "Night Carnival", text: "Fri-Sat night rides from 6-10 PM at ₹499" }
+          ],
+          mapQuery: "Worlds+of+Wonder+Noida"
+        },
+        {
+          name: "Kishkinta Theme Park",
+          location: "Chennai, Tamil Nadu",
+          type: "both",
+          image: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=600&auto=format",
+          startPrice: "₹649",
+          description: "Chennai's beloved theme park with a mix of adrenaline-pumping roller coasters, splashy water slides, and classic carnival rides. A South Indian family favourite!",
+          timings: "10:00 AM – 6:00 PM",
+          days: "Closed on Mondays",
+          phone: "+91 44 2762 7777",
+          highlights: "Roller Coaster, Water Slides, Columbus, Dodgem Cars",
+          packages: [
+            { name: "Adult", price: "₹849", detail: "All rides + water zone" },
+            { name: "Child", price: "₹649", detail: "Under 4 ft height" },
+            { name: "Weekend Special", price: "₹1,499", detail: "2 passes + buffet lunch" }
+          ],
+          offers: [
+            { tag: "Weekend Feast", text: "2 passes + buffet lunch at ₹1,299 on Sundays" },
+            { tag: "Pongal Blast", text: "Flat 40% OFF during Pongal week celebrations" }
+          ],
+          mapQuery: "Kishkinta+Theme+Park+Chennai"
+        },
+        {
+          name: "Amaazia Water & Adventure Park",
+          location: "Surat, Gujarat",
+          type: "both",
+          image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&auto=format",
+          startPrice: "₹799",
+          description: "Gujarat's newest and biggest water & adventure park featuring the terrifying Boomerango slide, Sky Screamer, and a beautiful lazy river winding through tropical landscaping!",
+          timings: "10:00 AM – 6:00 PM",
+          days: "Open all days",
+          phone: "+91 261 235 9999",
+          highlights: "Boomerango, Tornado, Sky Screamer, Wave Pool, Lazy River",
+          packages: [
+            { name: "Water Park", price: "₹899", detail: "All water slides & pools" },
+            { name: "Adventure", price: "₹799", detail: "Dry rides & attractions" },
+            { name: "All-In-One", price: "₹1,399", detail: "Water + Adventure + Meal" }
+          ],
+          offers: [
+            { tag: "All-In-One", text: "Water + Adventure + Meal at just ₹1,199!" },
+            { tag: "Navratri Nights", text: "Special night entry with Garba at ₹499" }
+          ],
+          mapQuery: "Amaazia+Water+Park+Surat"
+        }
+      ];
+
+    // ========== Modal Logic ==========
+    var overlay = document.getElementById('parkModalOverlay');
+    var closeBtn = document.getElementById('parkModalClose');
+
+    function openParkModal(index) {
+        var park = parks[index];
+        document.getElementById('modalHeroImg').src = park.image;
+        document.getElementById('modalHeroImg').alt = park.name;
+        document.getElementById('modalName').textContent = park.name;
+        document.getElementById('modalLocation').textContent = '📍 ' + park.location;
+
+        // Description
+        document.getElementById('modalDesc').textContent = park.description || '';
+
+        // Info grid
+        document.getElementById('modalInfo').innerHTML =
+          '<div class="park-modal__info-item"><strong>Timings:</strong> ' + park.timings + '</div>' +
+          '<div class="park-modal__info-item"><strong>Open Days:</strong> ' + park.days + '</div>' +
+          '<div class="park-modal__info-item"><strong>Phone:</strong> <a href="tel:' + park.phone.replace(/\s/g,'') + '" style="color:#0077b6;text-decoration:none;">' + park.phone + '</a></div>' +
+          '<div class="park-modal__info-item"><strong>Highlights:</strong> ' + park.highlights + '</div>';
+
+        // Packages
+        var pkgHtml = '';
+        for (var i = 0; i < park.packages.length; i++) {
+          var pkg = park.packages[i];
+          pkgHtml += '<div class="park-modal__pkg"><div class="park-modal__pkg-name">' + pkg.name + '</div><div class="park-modal__pkg-price">' + pkg.price + '</div><div class="park-modal__pkg-detail">' + pkg.detail + '</div></div>';
+        }
+        document.getElementById('modalPackages').innerHTML = pkgHtml;
+
+        // Offers
+        var offHtml = '';
+        var offers = park.offers || [];
+        for (var j = 0; j < offers.length; j++) {
+          var offer = offers[j];
+          offHtml += '<div class="park-modal__offer"><div class="park-modal__offer-tag">' + offer.tag + '</div><div class="park-modal__offer-text">' + offer.text + '</div></div>';
+        }
+        document.getElementById('modalOffers').innerHTML = offHtml;
+
+        // Google Map
+        document.getElementById('modalMap').src =
+          'https://www.google.com/maps?q=' + park.mapQuery + '&output=embed';
+
+        // Directions link
+        document.getElementById('modalDirections').href =
+          'https://www.google.com/maps/dir/?api=1&destination=' + park.mapQuery.replace(/\+/g, ' ');
+
+        // Book button
+        document.getElementById('modalBookBtn').href =
+          'booking.html?park=' + encodeURIComponent(park.name);
+
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeParkModal() {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+        document.getElementById('modalMap').src = '';
+    }
+
+    closeBtn.addEventListener('click', closeParkModal);
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) closeParkModal();
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeParkModal();
+    });
+
+    // ========== Search and Filter Functionality ==========
+    (function() {
+        var searchInput = document.getElementById('parkSearchInput');
+        var filterButtons = document.querySelectorAll('.park-search__filter');
+        var parkCards = document.querySelectorAll('.park-card');
+        var searchCount = document.getElementById('parkSearchCount');
+        var currentFilter = 'all';
+
+        function updateSearchCount(visibleCount, totalCount) {
+            if (searchCount) {
+                searchCount.textContent = visibleCount + ' of ' + totalCount + ' parks found';
+            }
+        }
+
+        function filterParks() {
+            var searchTerm = searchInput.value.toLowerCase().trim();
+            var visibleCount = 0;
+
+            parkCards.forEach(function(card) {
+                var name = card.querySelector('.park-card__name').textContent.toLowerCase();
+                var location = card.querySelector('.park-card__location').textContent.toLowerCase();
+                var typeSpan = card.querySelector('.park-card__type');
+                var typeClass = typeSpan.className;
+                var parkType = 'adventure';
+                
+                if (typeClass.includes('water') && !typeClass.includes('both')) {
+                    parkType = 'water';
+                } else if (typeClass.includes('both')) {
+                    parkType = 'both';
+                }
+
+                var matchesSearch = searchTerm === '' || 
+                    name.includes(searchTerm) || 
+                    location.includes(searchTerm);
+                
+                var matchesFilter = currentFilter === 'all' || 
+                    (currentFilter === 'water' && (parkType === 'water' || parkType === 'both')) ||
+                    (currentFilter === 'adventure' && (parkType === 'adventure' || parkType === 'both')) ||
+                    (currentFilter === 'both' && parkType === 'both');
+
+                if (matchesSearch && matchesFilter) {
+                    card.classList.remove('park-card--hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('park-card--hidden');
+                }
+            });
+
+            updateSearchCount(visibleCount, parkCards.length);
+        }
+
+        // Search input event listener
+        if (searchInput) {
+            searchInput.addEventListener('input', filterParks);
+        }
+
+        // Filter button click handlers
+        filterButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                // Update active state
+                filterButtons.forEach(function(btn) {
+                    btn.classList.remove('park-search__filter--active');
+                });
+                button.classList.add('park-search__filter--active');
+
+                // Update current filter
+                currentFilter = button.getAttribute('data-filter');
+
+                // Apply filter
+                filterParks();
+            });
+        });
+
+        // Initialize count
+        updateSearchCount(parkCards.length, parkCards.length);
+    })();
+</script>
+
+</body>
+</html>
