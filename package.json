@@ -1,0 +1,27 @@
+{
+  "name": "my-adventures",
+  "version": "1.0.0",
+  "description": "My Adventures Waterpark & Adventure Park Website",
+  "private": true,
+  "scripts": {
+    "dev": "http-server -p 3000",
+    "build": "echo 'No build step required for static site'",
+    "start": "http-server -p 3000",
+    "test": "echo 'Running tests...'; node test.js || python test.py"
+  },
+  "keywords": [
+    "waterpark",
+    "adventure",
+    "theme-park",
+    "static-site",
+    "html"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
