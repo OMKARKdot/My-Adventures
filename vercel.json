@@ -11,44 +11,6 @@
       "use": "@vercel/static"
     }
   ],
-  "routes": [
-    {
-      "src": "/",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/index.html",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/booking.html",
-      "dest": "/booking.html"
-    },
-    {
-      "src": "/login.html",
-      "dest": "/login.html"
-    },
-    {
-      "src": "/payment.html",
-      "dest": "/payment.html"
-    },
-    {
-      "src": "/blog.html",
-      "dest": "/blog.html"
-    },
-    {
-      "src": "/portfolio.html",
-      "dest": "/portfolio.html"
-    },
-    {
-      "src": "/contact.html",
-      "dest": "/contact.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
